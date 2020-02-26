@@ -19,6 +19,8 @@ public class JpaWiringTest {
     @Autowired
     private AuthorRepository authorRepo;
     @Autowired
+    private CategoryRepository catRepo;
+    @Autowired
     private TestEntityManager entityManager;
 
     @Test
@@ -57,5 +59,31 @@ public class JpaWiringTest {
         Author retrievedAuthor = authorRepo.findById(testAuthor.getId()).get();
 
         assertThat(retrievedAuthor.getPosts()).contains(testPost);
+    }
+
+    @Test
+    public void postShouldHaveCategory(){
+        Author testAuthor = new Author();
+        PostCategory testCat = new PostCategory();
+        Post testPost = new Post("test title", testAuthor, testCat);
+        PostCategory retrievedCat = testPost.getCategory();
+        assertThat(retrievedCat).isEqualTo(testCat);
+    }
+
+    @Test
+    public void categoryShouldHavePosts(){
+        Author testAuthor = new Author();
+        authorRepo.save(testAuthor);
+        PostCategory testCat = new PostCategory();
+        catRepo.save(testCat);
+        Post testPost = new Post("test title", testAuthor, testCat);
+        postRepo.save(testPost);
+
+        entityManager.flush();
+        entityManager.clear();
+
+        PostCategory retrievedCat = catRepo.findById(testCat.getId()).get();
+
+        assertThat(retrievedCat.getPosts()).contains(testPost);
     }
 }

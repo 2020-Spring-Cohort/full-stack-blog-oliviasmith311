@@ -17,6 +17,8 @@ public class Post {
 
     @ManyToOne
     private Author author;
+    @ManyToOne
+    private PostCategory postCategory;
 
     public Post() {
     }
@@ -24,6 +26,12 @@ public class Post {
     public Post(String title, Author author) {
         this.title = title;
         this.author = author;
+    }
+
+    public Post(String title, Author author, PostCategory postCategory){
+        this.title = title;
+        this.author = author;
+        this.postCategory = postCategory;
     }
 
     public Post(String title){
@@ -57,6 +65,8 @@ public class Post {
         return Objects.hash(id, title);
     }
 
-
+    public PostCategory getCategory() {
+        return postCategory;
+    }
 }
 
