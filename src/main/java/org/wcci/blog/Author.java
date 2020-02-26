@@ -9,6 +9,19 @@ import java.util.Collection;
 @Entity
 public class Author {
 
+    private String name;
+
+    public Author(){
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Author(String name){
+        this.name = name;
+    }
+
     public Long getId() {
         return id;
     }

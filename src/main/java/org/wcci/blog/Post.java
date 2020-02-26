@@ -1,14 +1,13 @@
 package org.wcci.blog;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.Objects;
 
 @Entity
 public class Post {
-
 
     @Id
     @GeneratedValue
@@ -19,29 +18,23 @@ public class Post {
     private Author author;
     @ManyToOne
     private PostCategory postCategory;
+    @ManyToMany
+    private Collection<Hashtag> hashtags;
+
 
     public Post() {
-    }
-
-    public Post(String title, Author author) {
-        this.title = title;
-        this.author = author;
     }
 
     public Post(String title, Author author, PostCategory postCategory){
         this.title = title;
         this.author = author;
         this.postCategory = postCategory;
-    }
-
-    public Post(String title){
-        this.title = title;
+        this.hashtags = new HashSet<>();
     }
 
     public Long getId() {
         return id;
     }
-
 
     public String getTitle() {
         return title;
@@ -65,8 +58,17 @@ public class Post {
         return Objects.hash(id, title);
     }
 
+    public void addHashtag(Hashtag hashtagToAdd) {
+        hashtags.add(hashtagToAdd);
+    }
+
     public PostCategory getCategory() {
         return postCategory;
     }
+
+    public Collection<Hashtag> getHashtags() {
+            return hashtags;
+    }
 }
+
 
