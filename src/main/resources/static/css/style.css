@@ -31,7 +31,7 @@ h2{
     linear-gradient(
       rgba(0, 0, 0, 0.151), 
       rgba(0, 0, 0, 0.151)
-    ), url("static-templates/mcelroy1.png");
+    ), url("/mcelroy1.png");
     background-repeat: no-repeat;
     background-size: cover;
     border-style: solid;

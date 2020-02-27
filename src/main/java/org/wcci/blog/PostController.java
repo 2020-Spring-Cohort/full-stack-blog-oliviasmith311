@@ -10,14 +10,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class PostController {
 
     private PostRepository postRepo;
+    private AuthorRepository authorRepo;
+    private CategoryRepository categoryRepo;
+    private HashtagRepository hashtagRepo;
 
     public PostController(PostRepository postRepo, AuthorRepository authorRepo, CategoryRepository categoryRepo, HashtagRepository hashtagRepo){
         this.postRepo = postRepo;
+        this.authorRepo = authorRepo;
+        this.categoryRepo = categoryRepo;
+        this.hashtagRepo = hashtagRepo;
     }
 
     @RequestMapping({"/posts", "/", ""})
     public String displayPosts(Model model){
-        model.addAttribute("posts", postRepo.findAllPosts());
+        model.addAttribute("posts", postRepo.findAll());
         return "index";
     }
 
@@ -26,6 +32,6 @@ public class PostController {
         Post retrievedPost = postRepo.findPostByTitle(title);
         model.addAttribute("post", retrievedPost);
 
-        return "categories";
+        return "singlepost";
     }
 }

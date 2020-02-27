@@ -46,7 +46,7 @@ public class WebLayerTest {
         when(mockRepo.findPostByTitle("test title")).thenReturn(testPost);
         mockMvc.perform(get("/posts/test title"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("index"))
+                .andExpect(view().name("singlepost"))
                 .andExpect(model().attributeExists("post"));
     }
 
