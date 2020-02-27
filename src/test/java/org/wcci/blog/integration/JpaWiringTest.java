@@ -1,15 +1,21 @@
-package org.wcci.blog;
+package org.wcci.blog.integration;
 
-import jdk.jfr.Category;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.annotation.DirtiesContext;
+import org.wcci.blog.models.Author;
+import org.wcci.blog.models.Hashtag;
+import org.wcci.blog.models.Post;
+import org.wcci.blog.models.PostCategory;
+import org.wcci.blog.repositories.AuthorRepository;
+import org.wcci.blog.repositories.CategoryRepository;
+import org.wcci.blog.repositories.HashtagRepository;
+import org.wcci.blog.repositories.PostRepository;
 
 
-import java.util.Collection;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;

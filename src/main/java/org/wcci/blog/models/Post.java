@@ -1,7 +1,6 @@
-package org.wcci.blog;
+package org.wcci.blog.models;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Objects;
@@ -20,6 +19,7 @@ public class Post {
     private PostCategory postCategory;
     @ManyToMany
     private Collection<Hashtag> hashtags;
+
 
 
     public Post() {

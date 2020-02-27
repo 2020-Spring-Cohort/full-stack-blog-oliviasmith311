@@ -1,9 +1,7 @@
-package org.wcci.blog;
+package org.wcci.blog.repositories;
 
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
-
-import java.util.Collection;
+import org.wcci.blog.models.Post;
 
 public interface PostRepository extends CrudRepository<Post, Long> {
 //    Collection<Post> findAllPosts();

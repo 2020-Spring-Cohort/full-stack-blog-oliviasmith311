@@ -1,4 +1,4 @@
-package org.wcci.blog;
+package org.wcci.blog.integration;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -7,6 +7,11 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
+import org.wcci.blog.models.Post;
+import org.wcci.blog.repositories.AuthorRepository;
+import org.wcci.blog.repositories.CategoryRepository;
+import org.wcci.blog.repositories.HashtagRepository;
+import org.wcci.blog.repositories.PostRepository;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;

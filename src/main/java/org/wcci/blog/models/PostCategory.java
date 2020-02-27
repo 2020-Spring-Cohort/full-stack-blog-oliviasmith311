@@ -1,4 +1,6 @@
-package org.wcci.blog;
+package org.wcci.blog.models;
+
+import org.wcci.blog.models.Post;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

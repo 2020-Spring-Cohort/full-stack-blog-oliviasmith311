@@ -1,4 +1,4 @@
-package org.wcci.blog;
+package org.wcci.blog.models;
 
 import javax.persistence.*;
 import java.util.ArrayList;

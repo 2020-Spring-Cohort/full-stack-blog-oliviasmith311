@@ -1,4 +1,4 @@
-package org.wcci.blog;
+package org.wcci.blog.integration;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -8,6 +8,8 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.wcci.blog.models.Post;
+import org.wcci.blog.repositories.PostRepository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -32,6 +34,13 @@ public class HttpRequestTest {
     public void postsEndPointReturnsOK() {
         ResponseEntity<String> response = testRestTemplate.getForEntity(
                 "http://localhost:" + port + "/posts", String.class);
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+    }
+
+    @Test
+    public void specificEndPointReturnsOK() {
+        ResponseEntity<String> response = testRestTemplate.getForEntity(
+                "http://localhost:" + port + "/posts/" + testPost.getTitle(), String.class);
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
     }
 }
