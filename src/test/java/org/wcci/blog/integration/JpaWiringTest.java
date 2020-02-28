@@ -75,7 +75,7 @@ public class JpaWiringTest {
         entityManager.flush();
         entityManager.clear();
 
-        Author retrievedAuthor = authorRepo.findById(testAuthor.getId()).get();
+        Author retrievedAuthor = authorRepo.findAuthorById(testAuthor.getId()).get();
 
         assertThat(retrievedAuthor.getPosts()).contains(testPost);
     }

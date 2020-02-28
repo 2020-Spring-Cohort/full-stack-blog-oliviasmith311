@@ -26,19 +26,19 @@
 
     <ul class="navbar__main">
         <li>All Posts</li>
-        <li><a href="../static/tags.html">Tags</a></li>
+        <li><a href="tags.html">Tags</a></li>
         <li><a href="categories.html">Categories</a></li>
-        <li><a href="../static/authors.html">Authors</a></li>
+        <li><a href="authors.html">Authors</a></li>
         <li>New Post</li>
     </ul>
 
     <div class="entries">
         <section class="entries__1" th:each="post:${posts}"><a th:href="@{'/posts/' + ${post.id}}" th:text="${post.title}"></a>
-            <h3>Blog Post 1 Title</h3>
+            <h3></h3>
             <div class="entries__info">
-                <p>Olivia Smith</p>
+                <p th:text="${post.author}"></p>
                 <p>March 11, 1996</p>
-                <p>Category</p>
+                <p th:text="${post.category}"></p>
             </div>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                 Recusandae nulla corrupti voluptas soluta magnam ipsam id,
@@ -51,70 +51,8 @@
                 Recusandae repellat nostrum eos omnis, iste provident quae in
                 dolor! Molestiae sed repellendus neque veniam porro voluptatum
                 aut labore eveniet, dicta reprehenderit!</p>
-            <p>Tags, Tags, Tags, Tags, Tags, Tags, Tags, Tags</p>
-        </section>
-
-        <section class="entries__2">
-            <h3>Blog Post 2 Title</h3>
-            <div class="entries__info">
-                <p>Emily Cant</p>
-                <p>March 11, 1996</p>
-                <p>Category</p>
-            </div>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Recusandae nulla corrupti voluptas soluta magnam ipsam id,
-                quia illum, rerum ab maiores quis, dicta qui vitae repudiandae
-                facere voluptate tenetur. Explicabo? Lorem ipsum dolor sit
-                amet consectetur, adipisicing elit. Laboriosam odio ut, cumque
-                vitae quidem sint aliquam sed, ipsam facilis cupiditate aperiam?
-                Veritatis enim quae illum recusandae modi voluptatum voluptate
-                possimus. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Recusandae repellat nostrum eos omnis, iste provident quae in
-                dolor! Molestiae sed repellendus neque veniam porro voluptatum
-                aut labore eveniet, dicta reprehenderit!</p>
-            <p>Tags,Tags, Tags, Tags, Tags, Tags, Tags, Tags, Tags</p>
-        </section>
-
-        <section class="entries__3">
-            <h3>Blog Post 3 Title</h3>
-            <div class="entries__info">
-                <p>Drew Davenport</p>
-                <p>March 11, 1996</p>
-                <p>Category</p>
-            </div>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Recusandae nulla corrupti voluptas soluta magnam ipsam id,
-                quia illum, rerum ab maiores quis, dicta qui vitae repudiandae
-                facere voluptate tenetur. Explicabo? Lorem ipsum dolor sit
-                amet consectetur, adipisicing elit. Laboriosam odio ut, cumque
-                vitae quidem sint aliquam sed, ipsam facilis cupiditate aperiam?
-                Veritatis enim quae illum recusandae modi voluptatum voluptate
-                possimus. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Recusandae repellat nostrum eos omnis, iste provident quae in
-                dolor! Molestiae sed repellendus neque veniam porro voluptatum
-                aut labore eveniet, dicta reprehenderit!</p>
-            <p>Tags, Tags, Tags, Tags, Tags</p>
-        </section>
-
-        <section class="entries__4">
-            <h3>Blog Post 4 Title</h3>
-            <div class="entries__info">
-                <p>Taako Taako</p>
-                <p>March 11, 1996</p>
-                <p>Category</p>
-            </div>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Recusandae nulla corrupti voluptas soluta magnam ipsam id,
-                quia illum, rerum ab maiores quis, dicta qui vitae repudiandae
-                facere voluptate tenetur. Explicabo? Lorem ipsum dolor sit
-                amet consectetur, adipisicing elit. Laboriosam odio ut, cumque
-                vitae quidem sint aliquam sed, ipsam facilis cupiditate aperiam?
-                Veritatis enim quae illum recusandae modi voluptatum voluptate
-                possimus. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Recusandae repellat nostrum eos omnis, iste provident quae in
-                dolor! Molestiae sed repellendus neque veniam porro voluptatum
-                aut labore eveniet, dicta reprehenderit!</p>
-            <p>Tags, Tags, Tags, Tags, Tags, Tags, Tags, Tags, Tags</p>
+           <a th:each="hashtag : ${post.getHashtags()}">
+            <p th:text="${hashtag.name}"></p></a>
         </section>
     </div>
 
