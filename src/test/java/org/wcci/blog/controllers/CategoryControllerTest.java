@@ -17,6 +17,7 @@ import org.wcci.blog.repositories.PostRepository;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 
 class CategoryControllerTest {
 
@@ -33,8 +34,8 @@ class CategoryControllerTest {
 
     @BeforeEach
     void setUp() {
-        underTest = new CategoryController(mockStorage);
         mockStorage = mock(CategoryRepository.class);
+        underTest = new CategoryController(mockStorage);
         hashtagRepo = mock(HashtagRepository.class);
         model = mock(Model.class);
         testCat = new PostCategory("testing title");
@@ -46,5 +47,23 @@ class CategoryControllerTest {
     public void displayCategoryReturnsSingleCategoryTemplate() {
         String result = underTest.displayCategory(1L, model);
         assertThat(result).isEqualTo("single-category");
+    }
+
+    @Test
+    public void displayCategoryInteractsWithDependenciesCorrectly() {
+        underTest.displayCategory(1L, model);
+        verify(mockStorage).findCategoryById(1L);
+        verify(model).addAttribute("category", testCat);
+    }
+
+
+    @Test
+    public void displayCategoryMappingIsCorrect() throws Exception {
+        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(underTest).build();
+        mockMvc.perform(MockMvcRequestBuilders.get("/categories/1"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("single-category"))
+                .andExpect(model().attributeExists("category"))
+                .andExpect(model().attribute("category", testCat));
     }
 }

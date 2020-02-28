@@ -6,5 +6,4 @@ import org.wcci.blog.models.PostCategory;
 
 public interface CategoryRepository extends CrudRepository<PostCategory, Long> {
     PostCategory findCategoryById(Long id);
-
 }
