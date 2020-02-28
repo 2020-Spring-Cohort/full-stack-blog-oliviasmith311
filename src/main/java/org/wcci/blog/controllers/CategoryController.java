@@ -21,4 +21,10 @@ public class CategoryController {
         model.addAttribute("category", retrievedCategory);
         return "single-category";
     }
+
+    @RequestMapping("/categories")
+    public String displayAllCategories(Model model){
+        model.addAttribute("categories", categoryRepo.findAll());
+        return "categories";
+    }
 }

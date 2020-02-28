@@ -46,7 +46,7 @@ public class JpaWiringTest {
 
     @Test
     public void postShouldSaveToPostRepo(){
-        Post testPost = new Post("test title", testAuthor, testCat);
+        Post testPost = new Post("test title", testAuthor, testCat, "testBody");
         postRepo.save(testPost);
 
         entityManager.flush();
@@ -61,7 +61,7 @@ public class JpaWiringTest {
 
     @Test
     public void postShouldHaveAuthor(){
-        Post testPost = new Post("test title", testAuthor, testCat);
+        Post testPost = new Post("test title", testAuthor, testCat, "testBody");
         Author retrievedAuthor = testPost.getAuthor();
         assertThat(retrievedAuthor).isEqualTo(testAuthor);
     }
@@ -69,7 +69,7 @@ public class JpaWiringTest {
     @Test
     public void authorShouldHavePosts(){
         authorRepo.save(testAuthor);
-        Post testPost = new Post("test title", testAuthor, testCat);
+        Post testPost = new Post("test title", testAuthor, testCat, "testBody");
         postRepo.save(testPost);
 
         entityManager.flush();
@@ -82,7 +82,7 @@ public class JpaWiringTest {
 
     @Test
     public void postShouldHaveCategory(){
-        Post testPost = new Post("test title", testAuthor, testCat);
+        Post testPost = new Post("test title", testAuthor, testCat, "testBody");
         PostCategory retrievedCat = testPost.getCategory();
         assertThat(retrievedCat).isEqualTo(testCat);
     }
@@ -91,7 +91,7 @@ public class JpaWiringTest {
     public void categoryShouldHavePosts(){
         authorRepo.save(testAuthor);
         catRepo.save(testCat);
-        Post testPost = new Post("test title", testAuthor, testCat);
+        Post testPost = new Post("test title", testAuthor, testCat, "testBody");
         postRepo.save(testPost);
 
         entityManager.flush();
@@ -104,7 +104,7 @@ public class JpaWiringTest {
 
     @Test
     public void postShouldHaveHashtags(){
-        Post testPost = new Post("test title", testAuthor, testCat);
+        Post testPost = new Post("test title", testAuthor, testCat, "testBody");
         postRepo.save(testPost);
         Hashtag testHashtag = new Hashtag("cool");
         hashtagRepo.save(testHashtag);
@@ -120,7 +120,7 @@ public class JpaWiringTest {
 
     @Test
     public void hashtagsShouldHavePosts(){
-        Post testPost = new Post("test title", testAuthor, testCat);
+        Post testPost = new Post("test title", testAuthor, testCat, "testBody");
         postRepo.save(testPost);
         Hashtag testHashtag = new Hashtag("great");
         hashtagRepo.save(testHashtag);

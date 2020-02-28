@@ -32,7 +32,11 @@ public class Populator implements CommandLineRunner {
         authorRepo.save(author1);
         PostCategory category1 = new PostCategory("Thoughts & Opinions");
         catRepo.save(category1);
-        Post post1 = new Post("The Joys Of The McElroys", author1, category1);
+        Post post1 = new Post("The Joys Of The McElroys", author1, category1, "These boys are great!");
+        postRepo.save(post1);
+        Hashtag hashtag1 = new Hashtag("cool");
+        hashtagRepo.save(hashtag1);
+        post1.addHashtag(hashtag1);
         postRepo.save(post1);
 
 

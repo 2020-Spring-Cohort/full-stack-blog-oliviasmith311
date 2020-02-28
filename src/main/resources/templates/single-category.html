@@ -5,114 +5,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Single Category</title>
-</head>
+    <title th:text="'All Reviews Of Category' + ${category.getTitle()}"></title></head>
 
-<link rel="stylesheet" href="../static/css/style.css">
-<link rel="stylesheet" href="../static/css/layout.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/layout.css">
 <link href="https://fonts.googleapis.com/css?family=Lacquer&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 
 <body>
 
     <div class="header">
-        <h1>Category</h1>
+        <h1 th:text="${category.getTitle()}"></h1>
     </div>
 
-
-
     <ul class="navbar">
-        <li>All Posts</li>
-        <li><a href="../static/tags.html">Tags</a></li>
-        <li><a href="categories.html">Categories</a></li>
-        <li><a href="../static/authors.html">Authors</a></li>
+        <li><a href="/posts">All Posts</a></li>
+        <li><a href="/hashtags">Tags</a></li>
+        <li><a href="/categories">Categories</a></li>
+        <li><a href="/authors">Authors</a></li>
         <li>New Post</li>
     </ul>
 
     <div class="entries">
-        <section class="entries__1" th:each="post:${posts}"><a th:href="@{'/posts/' + ${post.id}}" th:text="${post.title}"></a>
-            <h3>Blog Post 1 Title</h3>
+        <section class="entries__1" th:each="post:${category.getPosts()}">
+            <h3 th:text="${post.getTitle()}"></h3>
             <div class="entries__info">
-                <p>Olivia Smith</p>
+                <p th:text="${post.getAuthor()}"></p>
                 <p>March 11, 1996</p>
-                <p>Category</p>
+                <p th:text="${post.getCategory().title}"></p>
             </div>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Recusandae nulla corrupti voluptas soluta magnam ipsam id,
-                quia illum, rerum ab maiores quis, dicta qui vitae repudiandae
-                facere voluptate tenetur. Explicabo? Lorem ipsum dolor sit
-                amet consectetur, adipisicing elit. Laboriosam odio ut, cumque
-                vitae quidem sint aliquam sed, ipsam facilis cupiditate aperiam?
-                Veritatis enim quae illum recusandae modi voluptatum voluptate
-                possimus. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Recusandae repellat nostrum eos omnis, iste provident quae in
-                dolor! Molestiae sed repellendus neque veniam porro voluptatum
-                aut labore eveniet, dicta reprehenderit!</p>
-            <p>Tags, Tags, Tags, Tags, Tags, Tags, Tags, Tags</p>
+            <p th:text="${post.getPostBody()}"></p>
+            <a th:each="hashtag: ${post.getHashtags()}" th:href="@{'/hashtag/' + ${hashtag.getName()}}"
+            ><p th:text="'#'+${hashtag.getName()}"></p></a>
+
+
         </section>
 
-        <section class="entries__2">
-            <h3>Blog Post 2 Title</h3>
-            <div class="entries__info">
-                <p>Emily Cant</p>
-                <p>March 11, 1996</p>
-                <p>Category</p>
-            </div>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Recusandae nulla corrupti voluptas soluta magnam ipsam id,
-                quia illum, rerum ab maiores quis, dicta qui vitae repudiandae
-                facere voluptate tenetur. Explicabo? Lorem ipsum dolor sit
-                amet consectetur, adipisicing elit. Laboriosam odio ut, cumque
-                vitae quidem sint aliquam sed, ipsam facilis cupiditate aperiam?
-                Veritatis enim quae illum recusandae modi voluptatum voluptate
-                possimus. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Recusandae repellat nostrum eos omnis, iste provident quae in
-                dolor! Molestiae sed repellendus neque veniam porro voluptatum
-                aut labore eveniet, dicta reprehenderit!</p>
-            <p>Tags,Tags, Tags, Tags, Tags, Tags, Tags, Tags, Tags</p>
-        </section>
-
-        <section class="entries__3">
-            <h3>Blog Post 3 Title</h3>
-            <div class="entries__info">
-                <p>Drew Davenport</p>
-                <p>March 11, 1996</p>
-                <p>Category</p>
-            </div>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Recusandae nulla corrupti voluptas soluta magnam ipsam id,
-                quia illum, rerum ab maiores quis, dicta qui vitae repudiandae
-                facere voluptate tenetur. Explicabo? Lorem ipsum dolor sit
-                amet consectetur, adipisicing elit. Laboriosam odio ut, cumque
-                vitae quidem sint aliquam sed, ipsam facilis cupiditate aperiam?
-                Veritatis enim quae illum recusandae modi voluptatum voluptate
-                possimus. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Recusandae repellat nostrum eos omnis, iste provident quae in
-                dolor! Molestiae sed repellendus neque veniam porro voluptatum
-                aut labore eveniet, dicta reprehenderit!</p>
-            <p>Tags, Tags, Tags, Tags, Tags</p>
-        </section>
-
-        <section class="entries__4">
-            <h3>Blog Post 4 Title</h3>
-            <div class="entries__info">
-                <p>Taako Taako</p>
-                <p>March 11, 1996</p>
-                <p>Category</p>
-            </div>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Recusandae nulla corrupti voluptas soluta magnam ipsam id,
-                quia illum, rerum ab maiores quis, dicta qui vitae repudiandae
-                facere voluptate tenetur. Explicabo? Lorem ipsum dolor sit
-                amet consectetur, adipisicing elit. Laboriosam odio ut, cumque
-                vitae quidem sint aliquam sed, ipsam facilis cupiditate aperiam?
-                Veritatis enim quae illum recusandae modi voluptatum voluptate
-                possimus. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Recusandae repellat nostrum eos omnis, iste provident quae in
-                dolor! Molestiae sed repellendus neque veniam porro voluptatum
-                aut labore eveniet, dicta reprehenderit!</p>
-            <p>Tags, Tags, Tags, Tags, Tags, Tags, Tags, Tags, Tags</p>
-        </section>
     </div>
 
     <footer>Created by Olivia Smith. March 2, 2020.</footer>

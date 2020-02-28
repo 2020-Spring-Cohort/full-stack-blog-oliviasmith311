@@ -25,34 +25,24 @@
 
 
     <ul class="navbar__main">
-        <li>All Posts</li>
-        <li><a href="tags.html">Tags</a></li>
-        <li><a href="categories.html">Categories</a></li>
-        <li><a href="authors.html">Authors</a></li>
+        <li><a href="/posts">All Posts</a></li>
+        <li><a href="/hashtags">Tags</a></li>
+        <li><a href="/categories">Categories</a></li>
+        <li><a href="/authors">Authors</a></li>
         <li>New Post</li>
     </ul>
 
     <div class="entries">
-        <section class="entries__1" th:each="post:${posts}"><a th:href="@{'/posts/' + ${post.id}}" th:text="${post.title}"></a>
+        <section class="entries__1" th:each="post:${posts}"><a th:href="@{'/posts/' + ${post.getTitle()}}" th:text="${post.title}"></a>
             <h3></h3>
             <div class="entries__info">
-                <p th:text="${post.author}"></p>
+                <p th:text="${post.getAuthor().name}"></p>
                 <p>March 11, 1996</p>
-                <p th:text="${post.category}"></p>
+                <p th:text="${post.getCategory().title}"></p>
             </div>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Recusandae nulla corrupti voluptas soluta magnam ipsam id,
-                quia illum, rerum ab maiores quis, dicta qui vitae repudiandae
-                facere voluptate tenetur. Explicabo? Lorem ipsum dolor sit
-                amet consectetur, adipisicing elit. Laboriosam odio ut, cumque
-                vitae quidem sint aliquam sed, ipsam facilis cupiditate aperiam?
-                Veritatis enim quae illum recusandae modi voluptatum voluptate
-                possimus. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Recusandae repellat nostrum eos omnis, iste provident quae in
-                dolor! Molestiae sed repellendus neque veniam porro voluptatum
-                aut labore eveniet, dicta reprehenderit!</p>
-           <a th:each="hashtag : ${post.getHashtags()}">
-            <p th:text="${hashtag.name}"></p></a>
+            <p th:text="${post.getPostBody()}"></p>
+           <a th:each="hashtag: ${post.getHashtags()}" th:href="@{'/hashtag/' + ${hashtag.getName()}}">
+            <p th:text="'#'+${hashtag.name}"></p></a>
         </section>
     </div>
 

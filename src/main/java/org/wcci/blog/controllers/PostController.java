@@ -38,13 +38,12 @@ public class PostController {
     public String displaySinglePost(@PathVariable String title, Model model) {
         Post retrievedPost = postRepo.findPostByTitle(title);
         model.addAttribute("post", retrievedPost);
-
         return "singlepost";
     }
 
     @PostMapping("/add-post")
-    public String addPost(@RequestParam String title) {
-        postRepo.save(new Post(title, testAuthor, testCat));
+    public String addPost(@RequestParam String title, String postBody) {
+        postRepo.save(new Post(title, testAuthor, testCat, postBody));
         return "redirect:posts";
     }
 }

@@ -43,4 +43,8 @@ public class Hashtag {
     public int hashCode() {
         return Objects.hash(name, id);
     }
+
+    public Collection <Post> getPosts(){
+        return posts;
+    }
 }

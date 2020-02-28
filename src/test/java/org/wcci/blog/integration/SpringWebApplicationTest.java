@@ -49,7 +49,7 @@ public class SpringWebApplicationTest {
 
     @Test
     public void shouldReceiveOKFromSinglePostEndpoint() throws Exception {
-        Post testPost = new Post("test title", testAuthor, testCat);
+        Post testPost = new Post("test title", testAuthor, testCat, "testBody");
         when(postRepo.findPostByTitle("test title")).thenReturn(testPost);
 
         mockMvc.perform(get("/posts/test title"))

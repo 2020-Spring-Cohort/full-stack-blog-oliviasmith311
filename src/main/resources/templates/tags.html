@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>All Hashtags</title>
 </head>
 
 <link rel="stylesheet" href="../css/style.css">
@@ -13,8 +14,7 @@
 <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 
 <body>
-
-    <h1 th:text="${post.getTitle()}"></h1>
+    <h1>All Hashtags</h1>
 
     <ul class="navbar">
         <li><a href="/posts">All Posts</a></li>
@@ -24,21 +24,12 @@
         <li>New Post</li>
     </ul>
 
-
-    <div class="entries">
-        <section class="entries__1">
-            <h3 th:text="${post.title}"></h3>
-            <div class="entries__info">
-                <p th:text="${post.getAuthor().name}"></p>
-                <p>March 11, 1996</p>
-                <p th:text="${post.getCategory().title}"></p>
-            </div>
-            <p th:text="${post.getPostBody()}"></p>
-            <a th:each="hashtag: ${post.getHashtags()}" th:href="@{'/hashtag/' + ${hashtag.getName()}}">
-                <p th:text="'#'+${hashtag.name}"></p></a>
-        </section>
+    <div class="tags">
+        <a th:each="hashtags:${allHashtags}" th:href="@{'/hashtag/'+ ${hashtags.getName()}}"><p class="tag" th:text="'#'+${hashtags.getName()}"></p></a>
     </div>
 
+    <footer>Created by Olivia Smith. March 2, 2020.</footer>
 
 </body>
+
 </html>

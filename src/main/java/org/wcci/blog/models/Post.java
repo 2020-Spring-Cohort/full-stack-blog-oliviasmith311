@@ -20,16 +20,21 @@ public class Post {
     @ManyToMany
     private Collection<Hashtag> hashtags;
 
-
+    private String postBody;
 
     public Post() {
     }
 
-    public Post(String title, Author author, PostCategory postCategory){
+    public String getPostBody() {
+        return postBody;
+    }
+
+    public Post(String title, Author author, PostCategory postCategory, String postBody){
         this.title = title;
         this.author = author;
         this.postCategory = postCategory;
         this.hashtags = new HashSet<>();
+        this.postBody = postBody;
     }
 
     public Long getId() {

@@ -50,7 +50,7 @@ public class PostControllerTest {
 
     @Test
     public void shouldReturnViewWithOnePost() {
-        Post testPost = new Post("test title", testAuthor, testCat);
+        Post testPost = new Post("test title", testAuthor, testCat, "testBody");
         when(postRepo.findPostByTitle("test title")).thenReturn(testPost);
 
         underTest.displaySinglePost("test title", mockModel);
@@ -67,7 +67,7 @@ public class PostControllerTest {
 
     @Test
     public void shouldGoToIndividualEndPoint() throws Exception {
-        Post testPost = new Post("test title", testAuthor, testCat);
+        Post testPost = new Post("test title", testAuthor, testCat, "testBody");
         when(postRepo.findPostByTitle("test title")).thenReturn(testPost);
 
         mockMvc.perform(get("/posts/test title"))
@@ -79,7 +79,7 @@ public class PostControllerTest {
 
     @Test
     public void postsEndPointDisplaysAllPosts() throws Exception {
-        Post testPost = new Post("test title", testAuthor, testCat);
+        Post testPost = new Post("test title", testAuthor, testCat, "testBody");
 
         List<Post> postCollection = Collections.singletonList(testPost);
         when(postRepo.findAll()).thenReturn(postCollection);
@@ -93,14 +93,14 @@ public class PostControllerTest {
 
     @Test
     public void addPostShouldRedirectToPostsEndPoint() {
-        String result = underTest.addPost("test title");
+        String result = underTest.addPost("test title", "testBody");
         assertThat(result).isEqualTo("redirect:posts");
     }
 
     @Test
     public void addPostShouldStoreANewPost() {
-        underTest.addPost("test title");
-        verify(postRepo).save(new Post("test title", testAuthor, testCat));
+        underTest.addPost("test title", "testBody");
+        verify(postRepo).save(new Post("test title", testAuthor, testCat, "testBody"));
     }
 
     @Test
@@ -109,6 +109,6 @@ public class PostControllerTest {
                 .param("title", "test title"))
                 .andDo(print())
                 .andExpect(status().is3xxRedirection());
-        verify(postRepo).save(new Post("test title", testAuthor, testCat));
+        verify(postRepo).save(new Post("test title", testAuthor, testCat, "testBody"));
     }
 }

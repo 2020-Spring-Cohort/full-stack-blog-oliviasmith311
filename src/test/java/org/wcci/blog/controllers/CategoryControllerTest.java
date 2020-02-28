@@ -30,7 +30,7 @@ class CategoryControllerTest {
     private PostRepository postRepo;
     private HashtagRepository hashtagRepo;
     Author testAuthor = new Author();
-    Post testPost = new Post("test title", testAuthor, testCat);
+    Post testPost = new Post("test title", testAuthor, testCat, "testBody");
 
     @BeforeEach
     void setUp() {
