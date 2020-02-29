@@ -28,20 +28,20 @@
         <li><a href="/authors">Authors</a></li>
     </ul>
 
-<!--    <div class="entries">-->
-<!--        <section class="entries__1" th:each="${author.getPosts()}">-->
-<!--            <a th:href="@{'/posts/' + ${post.getTitle()}}"><h3 th:text="${post.getTitle()}"></h3></a>-->
-<!--            <div class="entries__info">-->
-<!--                <p th:text="${post.getAuthor().name}"></p>-->
-<!--                <p>March 11, 1996</p>-->
-<!--                <p th:text="${post.getCategory().title}"></p>-->
-<!--            </div>-->
-<!--            <p th:text="${post.getPostBody()}"></p>-->
-<!--            <a th:each="hashtag: ${post.getHashtags()}" th:href="@{'/hashtag/' + ${hashtag.getName()}}"-->
-<!--            ><p th:text="'#'+${hashtag.getName()}"></p></a>-->
+    <div class="entries">
+        <section class="entries__1" th:each="${author.getPosts()}">
+            <a th:href="@{'/posts/' + ${post.getTitle()}}"><h3 th:text="${post.getTitle()}"></h3></a>
+            <div class="entries__info">
+                <p th:text="${post.getAuthor().name}"></p>
+                <p>March 11, 1996</p>
+                <p th:text="${post.getCategory().title}"></p>
+            </div>
+            <p th:text="${post.getPostBody()}"></p>
+            <a th:each="hashtag: ${post.getHashtags()}" th:href="@{'/hashtag/' + ${hashtag.getName()}}"
+            ><p th:text="'#'+${hashtag.getName()}"></p></a>
 
 
-<!--        </section>-->
+        </section>
 
     </div>
 

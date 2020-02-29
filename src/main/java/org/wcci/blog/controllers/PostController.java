@@ -21,8 +21,8 @@ public class PostController {
     private AuthorRepository authorRepo;
     private CategoryRepository categoryRepo;
     private HashtagRepository hashtagRepo;
-    private Author testAuthor;
-    private PostCategory testCat;
+    private Author author;
+    private PostCategory category;
 
     public PostController(PostRepository postRepo, AuthorRepository authorRepo, CategoryRepository categoryRepo, HashtagRepository hashtagRepo){
         this.postRepo = postRepo;
@@ -46,8 +46,8 @@ public class PostController {
 
     @PostMapping("/add-post")
     public String addPost(@RequestParam String title, String postBody) {
-        postRepo.save(new Post(title, testAuthor, testCat, postBody));
-        return "redirect:posts";
+        postRepo.save(new Post(title, author, category, postBody));
+        return "redirect:/posts";
     }
 
     @PostMapping("/posts/{title}/add-hashtag")
