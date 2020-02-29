@@ -24,8 +24,17 @@
         <li><a href="/authors">Authors</a></li>
     </ul>
 
+
+    <article>
+        <form class="categories" action="/add-category" method="POST">
+            <h2></h2>
+            <input name="category"><br>
+            <button type="submit">Add a New Category</button>
+        </form>
+    </article>
+
     <div class="categories">
-        <a th:each="category:${categories}" th:href="@{'/categories/'+ ${category.getId()}}"><p th:text="${category.getTitle()}"></p></a>
+        <a th:each="category:${categories}" th:href="@{'/categories/' + ${category.id}}"><p th:text="${category.getTitle()}"></p></a>
     </div>
 
     <footer>Created by Olivia Smith. March 2, 2020.</footer>

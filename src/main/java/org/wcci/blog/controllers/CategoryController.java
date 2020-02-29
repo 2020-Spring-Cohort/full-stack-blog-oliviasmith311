@@ -3,9 +3,16 @@ package org.wcci.blog.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.wcci.blog.models.Hashtag;
+import org.wcci.blog.models.Post;
 import org.wcci.blog.models.PostCategory;
 import org.wcci.blog.repositories.CategoryRepository;
+import org.wcci.blog.repositories.PostRepository;
+
+import java.util.Optional;
 
 @Controller
 public class CategoryController {
@@ -26,5 +33,18 @@ public class CategoryController {
     public String displayAllCategories(Model model){
         model.addAttribute("categories", categoryRepo.findAll());
         return "categories";
+    }
+
+    @PostMapping("/categories/{id}/add-category")
+    public String addCategoryToAllCategories(@RequestParam Long id, @PathVariable String title){
+        PostCategory categoryToAdd;
+        Optional<PostCategory> categoryToAddOpt = categoryRepo.findById(id);
+        if(categoryToAddOpt.isEmpty()){
+            categoryToAdd = new PostCategory(title);
+            categoryRepo.save(categoryToAdd);
+        }else{
+            categoryToAdd = categoryToAddOpt.get();
+        }
+        return "redirect:/categories/"+ id;
     }
 }

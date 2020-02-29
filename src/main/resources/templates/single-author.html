@@ -16,7 +16,7 @@
 <body>
 
     <div class="header">
-        <h1>Author Name</h1>
+        <h1 th:text="'All Reviews By '+ ${name}"></h1>
     </div>
 
 
@@ -28,29 +28,20 @@
         <li><a href="/authors">Authors</a></li>
     </ul>
 
-    <div class="entries">
-        <section class="entries__1">
+<!--    <div class="entries">-->
+<!--        <section class="entries__1" th:each="${author.getPosts()}">-->
+<!--            <a th:href="@{'/posts/' + ${post.getTitle()}}"><h3 th:text="${post.getTitle()}"></h3></a>-->
+<!--            <div class="entries__info">-->
+<!--                <p th:text="${post.getAuthor().name}"></p>-->
+<!--                <p>March 11, 1996</p>-->
+<!--                <p th:text="${post.getCategory().title}"></p>-->
+<!--            </div>-->
+<!--            <p th:text="${post.getPostBody()}"></p>-->
+<!--            <a th:each="hashtag: ${post.getHashtags()}" th:href="@{'/hashtag/' + ${hashtag.getName()}}"-->
+<!--            ><p th:text="'#'+${hashtag.getName()}"></p></a>-->
 
-            <h3>Blog Post 1 Title</h3>
-            <div class="entries__info">
-                <p>Olivia Smith</p>
-                <p>March 11, 1996</p>
-                <p>Category</p>
-            </div>
 
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Recusandae nulla corrupti voluptas soluta magnam ipsam id,
-                quia illum, rerum ab maiores quis, dicta qui vitae repudiandae
-                facere voluptate tenetur. Explicabo? Lorem ipsum dolor sit
-                amet consectetur, adipisicing elit. Laboriosam odio ut, cumque
-                vitae quidem sint aliquam sed, ipsam facilis cupiditate aperiam?
-                Veritatis enim quae illum recusandae modi voluptatum voluptate
-                possimus. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Recusandae repellat nostrum eos omnis, iste provident quae in
-                dolor! Molestiae sed repellendus neque veniam porro voluptatum
-                aut labore eveniet, dicta reprehenderit!</p>
-            <p>Tags, Tags, Tags, Tags, Tags, Tags, Tags, Tags</p>
-        </section>
+<!--        </section>-->
 
     </div>
 

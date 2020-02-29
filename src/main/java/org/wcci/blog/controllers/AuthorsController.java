@@ -19,9 +19,9 @@ public class AuthorsController {
         this.authorRepo = authorRepo;
     }
 
-    @RequestMapping("/author/{id}")
-    public String displayAuthor(@PathVariable Long id, Model model) {
-        Optional<Author> retrievedAuthor = authorRepo.findAuthorById(id);
+    @RequestMapping("/author/{name}")
+    public String displayAuthor(@PathVariable String name, Model model) {
+        Optional<Author> retrievedAuthor = authorRepo.findAuthorByName(name);
         model.addAttribute("author", retrievedAuthor);
         return "single-author";
     }

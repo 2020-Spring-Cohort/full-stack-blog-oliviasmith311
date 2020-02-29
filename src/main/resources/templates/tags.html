@@ -23,6 +23,14 @@
         <li><a href="/authors">Authors</a></li>
     </ul>
 
+    <article>
+        <form class="hashtag" action="/add-hashtag" method="POST">
+            <h2>Add A Hashtag</h2>
+            <input name="Hashtag"><br>
+            <button type="submit">Make A New Hashtag</button>
+        </form>
+    </article>
+
     <div class="tags">
         <a th:each="hashtags:${allHashtags}" th:href="@{'/hashtag/'+ ${hashtags.getName()}}"><p class="tag" th:text="'#'+${hashtags.getName()}"></p></a>
     </div>
