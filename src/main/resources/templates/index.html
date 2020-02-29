@@ -29,11 +29,10 @@
         <li><a href="/hashtags">Tags</a></li>
         <li><a href="/categories">Categories</a></li>
         <li><a href="/authors">Authors</a></li>
-        <li>New Post</li>
     </ul>
 
     <div class="entries">
-        <section class="entries__1" th:each="post:${posts}"><a th:href="@{'/posts/' + ${post.getTitle()}}" th:text="${post.title}"></a>
+        <article class="entries__1" th:each="post:${posts}"><a th:href="@{'/posts/' + ${post.getTitle()}}" th:text="${post.title}"></a>
             <h3></h3>
             <div class="entries__info">
                 <p th:text="${post.getAuthor().name}"></p>
@@ -43,7 +42,7 @@
             <p th:text="${post.getPostBody()}"></p>
            <a th:each="hashtag: ${post.getHashtags()}" th:href="@{'/hashtag/' + ${hashtag.getName()}}">
             <p th:text="'#'+${hashtag.name}"></p></a>
-        </section>
+        </article>
     </div>
 
     <footer>Created by Olivia Smith. March 2, 2020.</footer>

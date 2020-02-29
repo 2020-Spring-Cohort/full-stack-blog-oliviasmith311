@@ -22,17 +22,10 @@
         <li><a href="/hashtags">Tags</a></li>
         <li><a href="/categories">Categories</a></li>
         <li><a href="/authors">Authors</a></li>
-        <li>New Post</li>
     </ul>
 
     <div class="authors">
-        <p>Author1</p>
-        <p>Author2</p>
-        <p>Author3</p>
-        <p>Author4</p>
-        <p>Author5</p>
-        <p>Author6</p>
-        <p>Author7</p>
+        <a th:each="authors:${authors}" th:href="@{'author/'+ ${authors.getId()}}"><p th:text="${authors.getName()}"></p></a>
     </div>
 
     <footer>Created by Olivia Smith. March 2, 2020.</footer>

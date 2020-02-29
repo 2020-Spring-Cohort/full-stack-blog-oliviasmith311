@@ -23,14 +23,13 @@
         <li><a href="/hashtags">Tags</a></li>
         <li><a href="/categories">Categories</a></li>
         <li><a href="/authors">Authors</a></li>
-        <li>New Post</li>
     </ul>
 
     <div class="entries">
         <section class="entries__1" th:each="post:${category.getPosts()}">
-            <h3 th:text="${post.getTitle()}"></h3>
+            <a th:href="@{'/posts/' + ${post.getTitle()}}"><h3 th:text="${post.getTitle()}"></h3></a>
             <div class="entries__info">
-                <p th:text="${post.getAuthor()}"></p>
+                <p th:text="${post.getAuthor().name}"></p>
                 <p>March 11, 1996</p>
                 <p th:text="${post.getCategory().title}"></p>
             </div>

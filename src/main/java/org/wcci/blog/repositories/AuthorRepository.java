@@ -9,4 +9,6 @@ import java.util.Optional;
 public interface AuthorRepository extends CrudRepository<Author, Long> {
 
     Optional<Author>findAuthorById(Long id);
+
+    Optional<Author>findAuthorByName(String name);
 }

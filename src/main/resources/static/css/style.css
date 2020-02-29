@@ -96,6 +96,7 @@ h2{
     border-color: black;
     border-style: solid;
     padding: 10px;
+    text-align: center;
 }
 
 .entries__2{
@@ -118,6 +119,12 @@ h2{
 
 .entries h3{
     font-size: 30px;
+}
+
+.entries__single{
+    display: block;
+    margin-left: 400px;
+    margin-right: 400px;
 }
 
 /* tags */
