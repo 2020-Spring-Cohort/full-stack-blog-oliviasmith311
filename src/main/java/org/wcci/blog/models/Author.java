@@ -7,20 +7,24 @@ import javax.persistence.OneToMany;
 import java.util.Collection;
 import java.util.Objects;
 
+
 @Entity
 public class Author {
 
+    @Id
+    @GeneratedValue
+    private Long id;
     private String name;
+
+    public Author(String name){
+        this.name = name;
+    }
 
     public Author(){
     }
 
     public String getName() {
         return name;
-    }
-
-    public Author(String name){
-        this.name = name;
     }
 
     public Long getId() {
@@ -33,10 +37,6 @@ public class Author {
     public Collection<Post> getPosts() {
         return posts;
     }
-
-    @Id
-    @GeneratedValue
-    private Long id;
 
     @Override
     public boolean equals(Object o) {

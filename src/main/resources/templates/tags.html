@@ -23,34 +23,6 @@
         <li><a href="/authors">Authors</a></li>
     </ul>
 
-    <article>
-        <form class="hashtag" th:action="'posts/' + ${title} + '/add-hashtag'" method="POST">
-            <h2>Add A Hashtag</h2>
-            <a><p>
-            <input name="hashtag" type="text"></p></a>
-            <button type="submit">Make A New Hashtag</button>
-        </form>
-    </article>
-
-
-    <form class= "single-review" method="POST" th:action="'/movies/' + ${movie.title} + '/add-review'">
-
-        <div class="review-title">
-            <a>
-                <p><input name="reviewTitle" th:value="${movie.title}"></p>
-            </a>
-        </div>
-        <div class="review-num-stars">
-            <p><input name="rating" type="text"></p>
-        </div>
-        <div class="review-date-time">
-            <p><input name="author" type="text"></p>
-        </div>
-        <div class="review-description-summary">
-            <p><textarea name="summary" type="type">
-                         </textarea>
-                <button type="submit">Make A New Review</button>
-
 
                 <div class="tags">
         <a th:each="hashtags:${allHashtags}" th:href="@{'/hashtag/'+ ${hashtags.getName()}}"><p class="tag" th:text="'#'+${hashtags.getName()}"></p></a>

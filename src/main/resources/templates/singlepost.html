@@ -24,9 +24,20 @@
     </ul>
 
 
+    <article>
+        <form class="hashtag" th:action="'/' + ${post.getTitle()} + '/add-hashtag'" method="POST">
+            <h2>Add A Hashtag</h2>
+            <a><p>
+                <input name="hashtag" type="text"></p></a>
+            <button type="submit">Make A New Hashtag</button>
+        </form>
+    </article>
+
+
+
     <div class="entries__single">
         <section class="entries__1">
-            <a th:href="@{'/author/' + ${post.getAuthor().name}}"><h3 th:text="${post.title}"></h3></a>
+            <h3 th:text="${post.title}"></h3>
             <div class="entries__info">
                 <a th:href="@{'/author/' + ${post.getAuthor().name}}"><p th:text="${post.getAuthor().name}"></p></a>
                 <p>March 11, 1996</p>

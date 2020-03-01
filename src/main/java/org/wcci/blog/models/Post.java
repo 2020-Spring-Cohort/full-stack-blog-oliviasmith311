@@ -11,6 +11,7 @@ public class Post {
     @Id
     @GeneratedValue
     private Long id;
+
     private String title;
 
     @ManyToOne

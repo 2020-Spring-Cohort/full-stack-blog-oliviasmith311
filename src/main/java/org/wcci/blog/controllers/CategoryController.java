@@ -35,16 +35,16 @@ public class CategoryController {
         return "categories";
     }
 
-    @PostMapping("/categories/{id}/add-category")
-    public String addCategoryToAllCategories(@RequestParam Long id, @PathVariable String title){
+    @PostMapping("/add-category")
+    public String addCategoryToAllCategories(@RequestParam String title){
         PostCategory categoryToAdd;
-        Optional<PostCategory> categoryToAddOpt = categoryRepo.findById(id);
+        Optional<PostCategory> categoryToAddOpt = categoryRepo.findCategoryByTitle(title);
         if(categoryToAddOpt.isEmpty()){
             categoryToAdd = new PostCategory(title);
-            categoryRepo.save(categoryToAdd);
         }else{
             categoryToAdd = categoryToAddOpt.get();
         }
-        return "redirect:/categories/"+ id;
+        categoryRepo.save(categoryToAdd);
+        return "redirect:/categories";
     }
 }

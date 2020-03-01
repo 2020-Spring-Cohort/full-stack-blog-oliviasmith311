@@ -50,7 +50,7 @@ public class PostController {
         return "redirect:/posts";
     }
 
-    @PostMapping("/posts/{title}/add-hashtag")
+    @PostMapping("/{title}/add-hashtag")
     public String addHashtagToPost(@RequestParam String hashtag, @PathVariable String title){
         Hashtag hashtagToAddToPost;
         Optional<Hashtag> hashtagToAddOpt = hashtagRepo.findByName(hashtag);
@@ -63,7 +63,7 @@ public class PostController {
         Post postToAddHashtagTo = postRepo.findPostByTitle(title);
         postToAddHashtagTo.addHashtag(hashtagToAddToPost);
         postRepo.save(postToAddHashtagTo);
-        return "redirect:/posts/"+ title;
+        return "redirect:/posts/" + title;
     }
 
 }
