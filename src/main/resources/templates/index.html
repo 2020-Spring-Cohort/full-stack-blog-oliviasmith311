@@ -32,16 +32,16 @@
     </ul>
 
     <article>
-        <form class="add-post" action="add-post" method="POST">
+        <form class="add-post" action="/add-post" method="POST">
             <h2>Add A Post</h2>
             <input name="title">Post Title
-            <input name="Post Author">Post Author
-            <input name="Post Category">Post Category
-            <input name="Post Body">Body of Post<br>
+            <input name="author">Post Author
+            <input name="category">Post Category
+            <input name="postBody">Body of Post<br>
             <button type="submit">Make A New Post</button>
         </form>
     </article>
-
+    
     <div class="entries">
         <article class="entries__1" th:each="post:${posts}"><a th:href="@{'/posts/' + ${post.getTitle()}}" th:text="${post.title}"></a>
             <h3></h3>

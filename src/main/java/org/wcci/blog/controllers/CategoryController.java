@@ -47,4 +47,5 @@ public class CategoryController {
         categoryRepo.save(categoryToAdd);
         return "redirect:/categories";
     }
+
 }

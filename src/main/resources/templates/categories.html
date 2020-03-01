@@ -26,10 +26,11 @@
 
 
     <article>
-        <form class="categories" action="/add-category" method="POST">
-            <h2></h2>
-            <input name="category"><br>
-            <button type="submit">Add a New Category</button>
+        <form class="categories" th:action="'/add-category'" method="POST">
+            <h2>Add A Category</h2>
+            <a><p>
+                <input name="title" type="text"></p></a>
+            <button type="submit">Make A New Category</button>
         </form>
     </article>
 

@@ -93,13 +93,13 @@ public class PostControllerTest {
 
     @Test
     public void addPostShouldRedirectToPostsEndPoint() {
-        String result = underTest.addPost("test title", "testBody");
+        String result = underTest.addPost("test title", "testAuthor", "testCategory", "testBody", mockModel);
         assertThat(result).isEqualTo("redirect:posts");
     }
 
     @Test
     public void addPostShouldStoreANewPost() {
-        underTest.addPost("test title", "testBody");
+        underTest.addPost("test title", "testAuthor", "testCategory", "testBody", mockModel);
         verify(postRepo).save(new Post("test title", testAuthor, testCat, "testBody"));
     }
 

@@ -45,10 +45,17 @@ public class PostController {
     }
 
     @PostMapping("/add-post")
-    public String addPost(@RequestParam String title, String postBody) {
-        postRepo.save(new Post(title, author, category, postBody));
+    public String addPost(@RequestParam String title, String author, String category, String postBody, Model model) {
+        Author authorToStore = new Author(author);
+        PostCategory categoryToStore = new PostCategory(category);
+        authorRepo.save(authorToStore);
+        categoryRepo.save(categoryToStore);
+        Post postToBeMade = new Post(title, authorToStore, categoryToStore, postBody);
+        postRepo.save(postToBeMade);
+        model.addAttribute("post", postToBeMade);
         return "redirect:/posts";
     }
+    
 
     @PostMapping("/{title}/add-hashtag")
     public String addHashtagToPost(@RequestParam String hashtag, @PathVariable String title){
