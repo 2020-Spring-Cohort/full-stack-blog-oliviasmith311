@@ -90,6 +90,7 @@ h2{
 
 .entries{
     font-family: 'Roboto', sans-serif;
+    font-size: 20px;
 }
 
 .entries__1{
@@ -118,19 +119,30 @@ h2{
 }
 
 .entries h3{
-    font-size: 30px;
+    font-size: 35px;
 }
 
 .entries__single{
     display: block;
     margin-left: 400px;
     margin-right: 400px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+}
+
+.entries__single h3{
+    font-size: 35px;
+}
+
+.postBody{
+    font-size: 25px;
 }
 
 /* tags */
 
 .tags{
-    font-size: 20px;
+    margin-left: 20px;
+    font-size: 30px;
     font-family: 'Roboto', sans-serif;
 }
 

@@ -34,7 +34,7 @@
         </form>
     </article>
 
-    <div class="categories">
+    <div class="tags">
         <a th:each="category:${categories}" th:href="@{'/categories/' + ${category.id}}"><p th:text="${category.getTitle()}"></p></a>
     </div>
 

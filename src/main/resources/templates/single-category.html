@@ -34,7 +34,7 @@
                 <p>March 11, 1996</p>
                 <a th:href="@{'/categories/' + ${post.getCategory().id}}"><p th:text="${post.getCategory().title}"></p></a>
             </div>
-            <p th:text="${post.getPostBody()}"></p>
+            <p class="postBody" th:text="${post.getPostBody()}"></p>
             <a th:each="hashtag: ${post.getHashtags()}" th:href="@{'/hashtag/' + ${hashtag.getName()}}"
             ><p th:text="'#'+${hashtag.getName()}"></p></a>
         </section>

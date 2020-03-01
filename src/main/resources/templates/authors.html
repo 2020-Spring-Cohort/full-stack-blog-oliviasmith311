@@ -24,7 +24,7 @@
         <li><a href="/authors">Authors</a></li>
     </ul>
 
-    <div class="authors">
+    <div class="tags">
         <a th:each="authors:${authors}" th:href="@{'author/'+ ${authors.getName()}}"><p th:text="${authors.getName()}"></p></a>
     </div>
 

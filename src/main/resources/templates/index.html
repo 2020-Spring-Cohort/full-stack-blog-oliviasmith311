@@ -41,17 +41,17 @@
             <button type="submit">Make A New Post</button>
         </form>
     </article>
-    
+
     <div class="entries">
-        <article class="entries__1" th:each="post:${posts}"><a th:href="@{'/posts/' + ${post.getTitle()}}" th:text="${post.title}"></a>
-            <h3></h3>
+        <article class="entries__1" th:each="post:${posts}">
+            <h3><a th:href="@{'/posts/' + ${post.getTitle()}}" th:text="${post.title}"></a></h3>
             <div class="entries__info">
                 <a th:href="@{'/author/' + ${post.getAuthor().name}}">
                 <p th:text="${post.getAuthor().name}"></p></a>
                 <p>March 11, 1996</p>
                <a th:href="@{'/categories/' + ${post.getCategory().id}}"><p th:text="${post.getCategory().title}"></p></a>
             </div>
-            <p th:text="${post.getPostBody()}"></p>
+            <p class="postBody" th:text="${post.getPostBody()}"></p>
            <a th:each="hashtag: ${post.getHashtags()}" th:href="@{'/hashtag/' + ${hashtag.getName()}}">
             <p th:text="'#'+${hashtag.name}"></p></a>
         </article>
