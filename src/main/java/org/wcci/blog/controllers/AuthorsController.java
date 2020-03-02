@@ -22,7 +22,7 @@ public class AuthorsController {
     @RequestMapping("/author/{name}")
     public String displayAuthor(@PathVariable String name, Model model) {
         Optional<Author> retrievedAuthor = authorRepo.findAuthorByName(name);
-        model.addAttribute("author", retrievedAuthor);
+        model.addAttribute("author", retrievedAuthor.get());
         return "single-author";
     }
 

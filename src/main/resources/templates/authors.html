@@ -25,7 +25,7 @@
     </ul>
 
     <div class="tags">
-        <a th:each="authors:${authors}" th:href="@{'author/'+ ${authors.getName()}}"><p th:text="${authors.getName()}"></p></a>
+        <a th:each="author:${authors}" th:href="@{'author/'+ ${author.getName()}}"><p th:text="${author.getName()}"></p></a>
     </div>
 
     <footer>Created by Olivia Smith. March 2, 2020.</footer>

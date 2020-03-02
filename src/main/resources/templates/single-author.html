@@ -16,7 +16,7 @@
 <body>
 
     <div class="header">
-        <h1 th:text="'All Reviews By '+ ${name}"></h1>
+        <h1 th:text="'All Reviews By '+ ${author.name}"></h1>
     </div>
 
 
@@ -29,16 +29,16 @@
     </ul>
 
     <div class="entries">
-        <section class="entries__1" th:each="author:${author.getPosts()}">
+        <section class="entries__1" th:each="post:${author.posts}">
             <a th:href="@{'/posts/' + ${post.getTitle()}}"><h3 th:text="${post.getTitle()}"></h3></a>
             <div class="entries__info">
-                <p th:text="${post.getAuthor().name}"></p>
+                <a th:href="@{'/author/' + ${post.getAuthor().name}}"><p th:text="${post.getAuthor().name}"></p></a>
                 <p>March 11, 1996</p>
-                <p th:text="${post.getCategory().title}"></p>
+                <a th:href="@{'/categories/' + ${post.getCategory().id}}"><p th:text="${post.getCategory().title}"></p></a>
             </div>
             <p class="postBody" th:text="${post.getPostBody()}"></p>
-            <a th:each="hashtag: ${post.getHashtags()}" th:href="@{'/hashtag/' + ${hashtag.getName()}}"
-            ><p th:text="'#'+${hashtag.getName()}"></p></a>
+            <a th:each="hashtag: ${post.getHashtags()}" th:href="@{'/hashtag/' + ${hashtag.getName()}}">
+                <p th:text="'#'+${hashtag.getName()}"></p></a>
         </section>
     </div>
 
